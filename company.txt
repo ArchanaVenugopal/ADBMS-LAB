@@ -1,0 +1,105 @@
+create database company;
+use company;
+create table persons(
+cust_id int,
+cust_name char(50),
+postal_code varchar(50));
+select * from persons;
+
+show columns from persons;
+create table product(
+prod_id int,
+prod_name char(50) );
+show tables;
+alter table product add age int;
+describe product;
+alter table product drop column age;
+describe product;
+alter table product modify column prod_name varchar(30);
+show columns from product;
+alter table product rename column prod_name to name;
+describe product;
+
+=======================================================
+create database college;
+use college;
+create table student(
+stud_id int,
+stud_name char(50),
+class int,
+major char(10))
+;
+describe student;
+show tables;
+alter table student add class varchar(30);
+describe student;
+
+insert into student values(1,'Athira',2,'MCA');
+insert into student values(2,'Archana',8,'BTECH');
+insert into student values(3,'Anjali',1,'MTECH');
+select * from student;
+=========================
+CREATE TABLE course(C_Id int PRIMARY KEY,
+ C_Name char(40),
+C_Number varchar(30),
+Credit_hours int,
+Dept char(10));
+INSERT INTO course VALUES(1,'Comp Sci','CS1310',4,'cs');
+INSERT INTO course VALUES(2,'Data Struct','CS3220',4,'CS');
+INSERT INTO course VALUES(3,'Maths','MATH2410',3,'MATH');
+INSERT INTO course VALUES(4,'Database','CS3380',3,'CS');
+SELECT * FROM course;
+=============================
+
+create table section(sect_identifier int,course_no varchar(30),sem char(20),year int,instructor char(30));
+INSERT INTO section VALUES(85,'MATH2410','Fail',07,'King');
+INSERT INTO section VALUES(92,'CS1310','Fail',07,'Andrew');
+INSERT INTO section VALUES(102,'CS3220','Spring',08,'Ben');
+INSERT INTO section VALUES(112,'MATH2410','Fail',08,'Chang');
+INSERT INTO section VALUES(119,'CS1310','Fail',08,'Shah');
+=====================
+create database company;
+
+create table employee(ID int not null , fname char(50) not null , lname char(50), dept_name varchar(20), primary key(ID));
+
+ALTER TABLE employee MODIFY lname char(50) NOT NULL;
+
+
+
+INSERT INTO employee(ID,fname,lname,dept_name) VALUES (1,"sheema","Madhusudhanan","Maths");
+INSERT INTO employee VALUES(2, "Hima", "Vijay","CSE");
+
+INSERT INTO employee(ID,fname,lname) VALUES(3, "Aijo", "John");
+
+select * from employee;
+=======================================================
+
+CREATE TABLE course(C_Id int PRIMARY KEY,
+ C_Name char(40),
+C_Number varchar(30),
+Credit_hours int,
+Dept char(10));
+INSERT INTO course VALUES(1,'Comp Sci','CS1310',4,'cs');
+INSERT INTO course VALUES(2,'Data Struct','CS3220',4,'CS');
+INSERT INTO course VALUES(3,'Maths','MATH2410',3,'MATH');
+INSERT INTO course VALUES(4,'Database','CS3380',3,'CS');
+SELECT * FROM course;
+alter table course rename column C_Name to First_name;
+describe course;
+select * from course where C_Id >=3;
+select * from course where C_Id between 2 and 4;
+select First_name,Dept from course where First_name like 'D%';
+select First_name,C_Number,Dept from course where Dept like '%S';
+
+=========================================================================
+
+update course set Dept='CS',C_Name='Computer Science' where C_Id=1;
+delete from course where C_Id=2;
+select min(C_id) as minid from course;
+select max(C_id) as maxid from course;
+select avg(Credit_hours) as average from course;
+select count(C_id) from course where Dept='cs';
+select sum(Credit_hours) from course;
+select * from course order by C_Name;
+select * from course order by C_Name desc;
+select count(Credit_hours),DEpt from course group by Dept;
